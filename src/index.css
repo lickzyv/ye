@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  
+  body {
+    @apply font-body text-gray-800 dark:text-gray-200;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-cyber;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-cyber font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 relative overflow-hidden;
+  }
+
+  .btn::before {
+    @apply content-[''] absolute inset-0 bg-gradient-to-r from-primary/50 to-secondary/50 opacity-0 transition-opacity duration-300;
+  }
+
+  .btn:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-opacity-90 focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-opacity-90 focus:ring-secondary;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-cyber font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary animate-glow;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-secondary transition-colors duration-200 font-cyber;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .card {
+    @apply bg-white/80 dark:bg-dark-secondary/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-transparent hover:border-primary/20 dark:hover:border-secondary/20;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-lg bg-light-secondary dark:bg-dark-primary border-2 border-transparent focus:border-primary dark:focus:border-secondary focus:outline-none transition-colors duration-200 font-body;
+  }
+
+  .theme-toggle {
+    @apply relative w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-600 transition-colors duration-200 cursor-pointer;
+  }
+
+  .theme-toggle::after {
+    @apply content-[''] absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform duration-200 transform;
+  }
+
+  .theme-toggle.dark::after {
+    @apply translate-x-6 bg-secondary;
+  }
+}
+
+/* Custom animations */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5),
+                 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8),
+                 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glassmorphism */
+.glass {
+  @apply bg-white/10 dark:bg-dark-secondary/10 backdrop-blur-lg border border-white/20 dark:border-white/10;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+}
+
+/* Cyberpunk border */
+.cyber-border {
+  @apply relative;
+}
+
+.cyber-border::before {
+  @apply content-[''] absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary opacity-0 transition-opacity duration-300 rounded-lg -z-10;
+}
+
+.cyber-border:hover::before {
+  @apply opacity-100;
+}
